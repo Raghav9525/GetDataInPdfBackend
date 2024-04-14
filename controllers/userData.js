@@ -90,10 +90,6 @@ const generatePDF = (req, res) => {
 
 
 
-
-
-
-
 // to store userData in database
 function storeData(userData) {
     return new Promise((resolve, reject) => {
@@ -155,15 +151,14 @@ function storeData(userData) {
 // Function to store user Info
 const storeUserData = (req, res) => {
     const userData = req.body;
-    console.log(userData)
+    console.log(userData);
 
-    console.log("above user Data")
     storeData(userData)
         .then(message => {
-            res.status(200).send({ message: message });
+            res.status(200).send({ message: "Data stored in Database" });
         })
         .catch(error => {
-            res.status(500).send({ message: error });
+            res.status(500).send({ message: "Error, Data not stored" });
         });
 };
 
